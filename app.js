@@ -1,6 +1,5 @@
 const list = document.getElementById("list");
 const enter = document.getElementById("enter");
-list.innerHTML = localStorage.getItem("items");
 
 enter.addEventListener("click", add => {
     var input = document.getElementById("form").value;
@@ -15,3 +14,5 @@ document.querySelector('#list').addEventListener('click', function({target}) {
     target.remove();
     localStorage.setItem('items', document.getElementById("list").innerHTML);
 }, false);
+
+list.innerHTML = localStorage.getItem("items");
