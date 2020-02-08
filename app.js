@@ -2,11 +2,11 @@ const list = document.getElementById("list")
 const enter = document.getElementById("enter")
 
 enter.addEventListener("click", add => {
-    window.localStorage("input", "document.getElementById("form").value")
-    window.localStorage("node", "document.createElement("LI")")
-    window.localStorage("node", "document.createTextNode(window.localStorage.getItem("input"))")
-    node.appendChild(window.localStorage.getItem("text"))
-    list.appendChild(window.localStorage.getItem("node"))
+    var input = document.getElementById("form").value
+    var node = document.createElement("LI")
+    var text = document.createTextNode(input)
+    node.appendChild(text)
+    list.appendChild(node)
 })
 document.querySelector('#list').addEventListener('click', function({target}) {
   if (target.matches('li'))
