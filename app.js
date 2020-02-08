@@ -2,9 +2,9 @@ const list = document.getElementById("list")
 const enter = document.getElementById("enter")
 
 enter.addEventListener("click", add => {
-    var input = document.getElementById("form").value
+    localStorage("input", "document.getElementById("form").value")
     var node = document.createElement("LI")
-    var text = document.createTextNode(input)
+    var text = document.createTextNode(localStorage.getItem("input"))
     node.appendChild(text)
     list.appendChild(node)
 })
