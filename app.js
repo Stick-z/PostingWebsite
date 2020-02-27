@@ -1,18 +1,23 @@
-const list = document.getElementById("list");
-const enter = document.getElementById("enter");
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+const output = document.querySelector("#p2");
 
-enter.addEventListener("click", add => {
-    var input = document.getElementById("form").value;
-    var node = document.createElement("LI");
-    var text = document.createTextNode(input);
-    node.appendChild(text);
-    list.appendChild(node);
-    localStorage.setItem('items', document.getElementById("list").innerHTML);
-})
-document.querySelector('#list').addEventListener('click', function({target}) {
-  if (target.matches('li'));
-    target.remove();
-    localStorage.setItem('items', document.getElementById("list").innerHTML);
-}, false);
+button.addEventListener("click", () => {
+  var value = input.value.split(",");
+  value = value.map(x => Number(x));
+  var mean = getMean(value);
+  console.log(mean);
+  var stdDev = getSD(value, mean);
+  console.log(stdDev);
+  output.innerHTML = `Mean: ${mean}, Standard Deviation: ${stdDev}`
+});
 
-list.innerHTML = localStorage.getItem("items");
+const getMean = arr => {
+  return arr.reduce((x, y) => x + y, 0) / arr.length;
+};
+
+const getSD = function (arr, avg) {
+  var numerator = arr.reduce((x, y) => x + Math.pow(y - avg, 2), 0)
+  let SD = Math.sqrt(numerator / arr.length);
+  return SD;
+};
